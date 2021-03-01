@@ -11,9 +11,21 @@
 		<title>Tailwind + Alpine</title>
 	</head>
 	<body class="bg-gray-100">
+		<div class="bg-indigo-500 text-white">
+			<div class="lg:container px-2 mx-auto py-4">
+				<h1 class="text-lg">Tailwind + Alpine</h1>
+				<p class="text-sm">
+					Random stuff built with Tailwind.css and Alpine.js. By Zack
+					Webster.
+				</p>
+			</div>
+		</div>
 		<div class="lg:container px-2 mx-auto py-4">
 			<div x-data="data()" class="grid md:grid-cols-4 gap-4">
-				<template x-for="(project, index) in projects" :key="index">
+				<template
+					x-for="(project, index) in projects.reverse()"
+					:key="index"
+				>
 					<a
 						x-bind:href="project.url"
 						class="bg-white shadow-xl rounded overflow-hidden"
@@ -31,7 +43,7 @@
 								x-text="project.name"
 							></h3>
 							<p
-								class="text-gray-400"
+								class="text-gray-400 text-sm"
 								x-text="project.description"
 							></p>
 						</div>
