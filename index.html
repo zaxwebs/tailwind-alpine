@@ -15,7 +15,7 @@
 			<div x-data="data()" class="grid md:grid-cols-4 gap-4">
 				<template x-for="(project, index) in projects" :key="index">
 					<a
-						href="#"
+						x-bind:href="project.url"
 						class="bg-white shadow-xl rounded overflow-hidden"
 					>
 						<div class="bg-indigo-900">
@@ -44,8 +44,10 @@
 				return {
 					projects: [
 						{
-							name: "Template",
-							description: "Starter file for projects.",
+							url: "template.html",
+							name: "Base Template",
+							description:
+								"Starter file for projects by Zack Webster.",
 						},
 					],
 				}
