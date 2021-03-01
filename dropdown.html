@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+			rel="stylesheet"
+		/>
+		<title>Tailwind + Alpine</title>
+	</head>
+	<body class="bg-gray-100 h-screen flex items-center justify-center p-2">
+		<div x-data="{dropped: false}" class="relative">
+			<button
+				@click="dropped = !dropped"
+				class="bg-indigo-500 text-white px-3 py-2 rounded"
+			>
+				<div class="flex items-center">
+					<span class="mr-1">Dropdown</span>
+					<div class="opacity-70">
+						<svg
+							x-show="!dropped"
+							class="h-4 w-4"
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 20 20"
+							fill="currentColor"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+						<svg
+							x-show="dropped"
+							class="h-4 w-4"
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 20 20"
+							fill="currentColor"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</div>
+				</div>
+			</button>
+			<div
+				@click.away="dropped = false"
+				x-show="dropped"
+				class="absolute bg-white text-gray-500 p-3 mt-2 right-0 min-w-full shadow rounded"
+			>
+				Hello
+			</div>
+		</div>
+		<script
+			src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+			defer
+		></script>
+	</body>
+</html>

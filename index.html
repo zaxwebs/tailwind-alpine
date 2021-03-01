@@ -22,10 +22,7 @@
 		</div>
 		<div class="lg:container px-2 mx-auto py-4">
 			<div x-data="data()" class="grid md:grid-cols-4 gap-4">
-				<template
-					x-for="(project, index) in projects.reverse()"
-					:key="index"
-				>
+				<template x-for="(project, index) in projects" :key="index">
 					<a
 						x-bind:href="project.url"
 						class="bg-white shadow-xl rounded overflow-hidden"
@@ -59,7 +56,12 @@
 							url: "template.html",
 							name: "Base Template",
 							description:
-								"Starter file for projects by Zack Webster.",
+								"Starter file for Tailwind + Alpine projects.",
+						},
+						{
+							url: "dropdown.html",
+							name: "Dropdown",
+							description: "A simple dropdown implementation.",
 						},
 					],
 				}
