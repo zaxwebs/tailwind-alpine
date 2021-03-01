@@ -11,19 +11,46 @@
 		<title>Tailwind + Alpine</title>
 	</head>
 	<body class="bg-gray-100">
-		<div class="lg:container mx-auto py-4">
-			<div class="grid grid-cols-4 gap-4">
-				<a href="#" class="bg-white shadow-xl rounded overflow-hidden">
-					<div class="h-48 bg-indigo-900"></div>
-					<div class="p-3">
-						<h3 class="font-semibold">Project Name</h3>
-						<p class="text-gray-400">
-							A short description goes here.
-						</p>
-					</div>
-				</a>
+		<div class="lg:container px-2 mx-auto py-4">
+			<div x-data="data()" class="grid md:grid-cols-4 gap-4">
+				<template x-for="(project, index) in projects" :key="index">
+					<a
+						href="#"
+						class="bg-white shadow-xl rounded overflow-hidden"
+					>
+						<div class="bg-indigo-900">
+							<img
+								class="object-cover h-48 w-full"
+								src="https://source.unsplash.com/random"
+								alt="Project image"
+							/>
+						</div>
+						<div class="p-3">
+							<h3
+								class="font-semibold"
+								x-text="project.name"
+							></h3>
+							<p
+								class="text-gray-400"
+								x-text="project.description"
+							></p>
+						</div>
+					</a>
+				</template>
 			</div>
 		</div>
+		<script>
+			function data() {
+				return {
+					projects: [
+						{
+							name: "Template",
+							description: "Starter file for projects.",
+						},
+					],
+				}
+			}
+		</script>
 		<script
 			src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
 			defer
