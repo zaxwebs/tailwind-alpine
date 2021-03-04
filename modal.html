@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+			rel="stylesheet"
+		/>
+		<title>Tailwind + Alpine</title>
+	</head>
+	<body class="p-2">
+		<div class="w-full max-w-lg mx-auto">
+			<p class="mb-6">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+				erat libero, rhoncus quis risus sit amet, consequat ullamcorper
+				orci. Etiam eu iaculis leo. Nam sollicitudin erat massa, non
+				elementum nisi gravida in. Cras a porta massa. Suspendisse
+				ornare feugiat nisl, eget dapibus arcu mattis sed. Nam sagittis
+				consequat felis, eu semper nibh rhoncus et. In viverra tempus
+				nisi, nec dignissim sem ultricies eget. Sed vitae mi finibus,
+				interdum turpis eu, auctor odio.
+			</p>
+			<div x-data="modal()">
+				<!-- Trigger -->
+				<button
+					x-spread="open"
+					class="px-4 py-2 mb-6 text-white bg-indigo-500 hover:bg-indigo-600"
+				>
+					Open Modal
+				</button>
+				<!-- Modal -->
+				<div
+					x-spread="show"
+					class="fixed inset-0 flex items-center justify-center bg-gray-400 bg-opacity-70"
+				>
+					<div x-spread="away" class="w-full max-w-md p-4 bg-white">
+						<p class="mb-6">
+							Lorem ipsum dolor sit amet, consectetur adipiscing
+							elit. Aenean erat libero, rhoncus quis risus sit
+							amet, consequat ullamcorper orci. Etiam eu iaculis
+							leo. Nam sollicitudin erat massa, non elementum nisi
+							gravida in. Cras a porta massa. Suspendisse ornare
+							feugiat nisl, eget dapibus arcu mattis sed. Nam
+							sagittis consequat felis, eu semper nibh rhoncus et.
+							In viverra tempus nisi, nec dignissim sem ultricies
+							eget. Sed vitae mi finibus, interdum turpis eu,
+							auctor odio.
+						</p>
+						<button
+							x-spread="close"
+							class="px-4 py-2 text-white bg-indigo-500 hover:bg-indigo-600"
+						>
+							Close Modal
+						</button>
+					</div>
+				</div>
+			</div>
+			<p class="mb-6">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+				erat libero, rhoncus quis risus sit amet, consequat ullamcorper
+				orci. Etiam eu iaculis leo. Nam sollicitudin erat massa, non
+				elementum nisi gravida in. Cras a porta massa. Suspendisse
+				ornare feugiat nisl, eget dapibus arcu mattis sed. Nam sagittis
+				consequat felis, eu semper nibh rhoncus et. In viverra tempus
+				nisi, nec dignissim sem ultricies eget. Sed vitae mi finibus,
+				interdum turpis eu, auctor odio.
+			</p>
+			<p class="mb-6">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+				erat libero, rhoncus quis risus sit amet, consequat ullamcorper
+				orci. Etiam eu iaculis leo. Nam sollicitudin erat massa, non
+				elementum nisi gravida in. Cras a porta massa. Suspendisse
+				ornare feugiat nisl, eget dapibus arcu mattis sed. Nam sagittis
+				consequat felis, eu semper nibh rhoncus et. In viverra tempus
+				nisi, nec dignissim sem ultricies eget. Sed vitae mi finibus,
+				interdum turpis eu, auctor odio.
+			</p>
+			<p class="mb-6">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+				erat libero, rhoncus quis risus sit amet, consequat ullamcorper
+				orci. Etiam eu iaculis leo. Nam sollicitudin erat massa, non
+				elementum nisi gravida in. Cras a porta massa. Suspendisse
+				ornare feugiat nisl, eget dapibus arcu mattis sed. Nam sagittis
+				consequat felis, eu semper nibh rhoncus et. In viverra tempus
+				nisi, nec dignissim sem ultricies eget. Sed vitae mi finibus,
+				interdum turpis eu, auctor odio.
+			</p>
+			<p class="mb-6">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+				erat libero, rhoncus quis risus sit amet, consequat ullamcorper
+				orci. Etiam eu iaculis leo. Nam sollicitudin erat massa, non
+				elementum nisi gravida in. Cras a porta massa. Suspendisse
+				ornare feugiat nisl, eget dapibus arcu mattis sed. Nam sagittis
+				consequat felis, eu semper nibh rhoncus et. In viverra tempus
+				nisi, nec dignissim sem ultricies eget. Sed vitae mi finibus,
+				interdum turpis eu, auctor odio.
+			</p>
+			<p class="mb-6">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+				erat libero, rhoncus quis risus sit amet, consequat ullamcorper
+				orci. Etiam eu iaculis leo. Nam sollicitudin erat massa, non
+				elementum nisi gravida in. Cras a porta massa. Suspendisse
+				ornare feugiat nisl, eget dapibus arcu mattis sed. Nam sagittis
+				consequat felis, eu semper nibh rhoncus et. In viverra tempus
+				nisi, nec dignissim sem ultricies eget. Sed vitae mi finibus,
+				interdum turpis eu, auctor odio.
+			</p>
+		</div>
+		<!-- Scripts -->
+		<script>
+			function modal() {
+				return {
+					isOpen: false,
+					open: {
+						["@click"]() {
+							this.isOpen = true
+						},
+					},
+					close: {
+						["@click"]() {
+							this.isOpen = false
+						},
+					},
+					away: {
+						["@click.away"]() {
+							this.isOpen = false
+						},
+					},
+					show: {
+						["x-show"]() {
+							return this.isOpen
+						},
+					},
+				}
+			}
+		</script>
+		<script
+			src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+			defer
+		></script>
+	</body>
+</html>
