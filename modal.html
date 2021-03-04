@@ -32,10 +32,13 @@
 				</button>
 				<!-- Modal -->
 				<div
-					x-spread="show"
+					x-spread="handleShow"
 					class="fixed inset-0 flex items-center justify-center bg-gray-400 bg-opacity-70"
 				>
-					<div x-spread="away" class="w-full max-w-md p-4 bg-white">
+					<div
+						x-spread="handleAway"
+						class="w-full max-w-md p-4 bg-white"
+					>
 						<p class="mb-6">
 							Lorem ipsum dolor sit amet, consectetur adipiscing
 							elit. Aenean erat libero, rhoncus quis risus sit
@@ -123,12 +126,12 @@
 							this.isOpen = false
 						},
 					},
-					away: {
+					handleAway: {
 						["@click.away"]() {
 							this.isOpen = false
 						},
 					},
-					show: {
+					handleShow: {
 						["x-show.transition.opacity"]() {
 							return this.isOpen
 						},
