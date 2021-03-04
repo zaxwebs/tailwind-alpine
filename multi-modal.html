@@ -23,7 +23,7 @@
 					x-spread="open"
 					class="px-4 py-2 mb-6 text-white bg-indigo-500 hover:bg-indigo-600"
 				>
-					Open Modal
+					Open Modal A
 				</button>
 				<!-- Modal -->
 				<div
@@ -34,6 +34,7 @@
 						x-spread="handleAway"
 						class="w-full max-w-md p-4 bg-white"
 					>
+						<h1 class="text-lg font-semi mb-2">Modal A</h1>
 						<p class="mb-6">
 							Lorem ipsum dolor sit amet, consectetur adipiscing
 							elit. Aenean erat libero, rhoncus quis risus sit
@@ -65,6 +66,45 @@
 				nisi, nec dignissim sem ultricies eget. Sed vitae mi finibus,
 				interdum turpis eu, auctor odio.
 			</p>
+			<div x-data="modal()">
+				<!-- Trigger -->
+				<button
+					x-spread="open"
+					class="px-4 py-2 mb-6 text-white bg-indigo-500 hover:bg-indigo-600"
+				>
+					Open Modal B
+				</button>
+				<!-- Modal -->
+				<div
+					x-spread="handleShow"
+					class="fixed inset-0 flex items-center justify-center bg-gray-400 bg-opacity-70"
+				>
+					<div
+						x-spread="handleAway"
+						class="w-full max-w-md p-4 bg-white"
+					>
+						<h1 class="text-lg font-semi mb-2">Modal B</h1>
+						<p class="mb-6">
+							Lorem ipsum dolor sit amet, consectetur adipiscing
+							elit. Aenean erat libero, rhoncus quis risus sit
+							amet, consequat ullamcorper orci. Etiam eu iaculis
+							leo. Nam sollicitudin erat massa, non elementum nisi
+							gravida in. Cras a porta massa. Suspendisse ornare
+							feugiat nisl, eget dapibus arcu mattis sed. Nam
+							sagittis consequat felis, eu semper nibh rhoncus et.
+							In viverra tempus nisi, nec dignissim sem ultricies
+							eget. Sed vitae mi finibus, interdum turpis eu,
+							auctor odio.
+						</p>
+						<button
+							x-spread="close"
+							class="px-4 py-2 text-white bg-indigo-500 hover:bg-indigo-600"
+						>
+							Close Modal
+						</button>
+					</div>
+				</div>
+			</div>
 			<p class="mb-6">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
 				erat libero, rhoncus quis risus sit amet, consequat ullamcorper
