@@ -17,7 +17,7 @@
 				class="fixed xl:static inset-0 flex bg-white bg-opacity-75 h-screen"
 			>
 				<div
-					@click.away="close()"
+					@click.away="handleAway()"
 					class="w-4/5 xl:w-64 text-white bg-gray-800 shadow"
 				>
 					<div class="flex bg-gray-900 content-between">
@@ -126,6 +126,12 @@
 					isOpen: false,
 					open() {
 						this.isOpen = true
+					},
+					handleAway() {
+						if (window.innerWidth < 1280) {
+							console.log(window.innerWidth)
+							this.isOpen = false
+						}
 					},
 					close() {
 						this.isOpen = false
