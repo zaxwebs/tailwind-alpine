@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+			rel="stylesheet"
+		/>
+		<title>Tailwind + Alpine</title>
+	</head>
+	<body x-data="sidebar()" class="bg-gray-200">
+		<div class="xl:flex">
+			<div
+				x-show="isOpen"
+				class="fixed xl:static inset-0 flex bg-white bg-opacity-75 h-screen"
+			>
+				<div
+					@click.away="close()"
+					class="w-4/5 xl:w-64 text-white bg-gray-800 shadow"
+				>
+					<div class="flex bg-gray-900 content-between">
+						<div class="p-3 w-full">Project Sidebar</div>
+						<a
+							@click.prevent="close()"
+							class="p-3 hover:bg-indigo-500 flex-1 flex items-center"
+							href="#"
+						>
+							<svg
+								class="h-5 w-5"
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M6 18L18 6M6 6l12 12"
+								/>
+							</svg>
+						</a>
+					</div>
+					<a class="block w-full p-3 hover:bg-indigo-500" href="#"
+						>Link</a
+					>
+					<a class="block w-full p-3 hover:bg-indigo-500" href="#"
+						>Link</a
+					>
+					<a class="block w-full p-3 hover:bg-indigo-500" href="#"
+						>Link</a
+					>
+					<a class="block w-full p-3 hover:bg-indigo-500" href="#"
+						>Link</a
+					>
+				</div>
+			</div>
+			<div>
+				<nav class="text-gray-700 bg-white flex">
+					<a
+						@click.prevent="open()"
+						class="p-3 hover:bg-indigo-500 hover:text-white"
+						href="#"
+					>
+						<svg
+							class="h-6 w-6"
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M4 6h16M4 12h16M4 18h16"
+							/>
+						</svg>
+					</a>
+				</nav>
+				<main class="grid gap-4 p-4 md:grid-cols-2 lg:grid-cols-3">
+					<div class="shadow-lg">
+						<div class="p-4 text-white bg-indigo-500">
+							Lorem Ipsum
+						</div>
+						<p class="p-4 bg-white">
+							Lorem ipsum dolor sit amet, consectetur adipiscing
+							elit. Nam euismod est at nunc rutrum, sit amet
+							eleifend magna lacinia. Nullam pharetra suscipit
+							ultricies. Nulla aliquet porttitor porta. Sed
+							finibus pretium diam, vitae volutpat arcu accumsan
+							a. Class aptent taciti sociosqu ad litora torquent
+							per conubia nostra, per inceptos himenaeos.
+							Suspendisse potenti. Suspendisse lacus ante, aliquet
+							in dignissim non, ultrices lobortis metus. Integer
+							auctor laoreet odio et molestie. Maecenas semper
+							egestas justo, nec tincidunt augue.
+						</p>
+					</div>
+					<div class="shadow-lg">
+						<div class="p-4 text-white bg-indigo-500">
+							Lorem Ipsum
+						</div>
+						<p class="p-4 bg-white">
+							Lorem ipsum dolor sit amet, consectetur adipiscing
+							elit. Nam euismod est at nunc rutrum, sit amet
+							eleifend magna lacinia. Nullam pharetra suscipit
+							ultricies. Nulla aliquet porttitor porta. Sed
+							finibus pretium diam, vitae volutpat arcu accumsan
+							a. Class aptent taciti sociosqu ad litora torquent
+							per conubia nostra, per inceptos himenaeos.
+							Suspendisse potenti. Suspendisse lacus ante, aliquet
+							in dignissim non, ultrices lobortis metus. Integer
+							auctor laoreet odio et molestie. Maecenas semper
+							egestas justo, nec tincidunt augue.
+						</p>
+					</div>
+				</main>
+			</div>
+		</div>
+		<script>
+			function sidebar() {
+				return {
+					isOpen: false,
+					open() {
+						this.isOpen = true
+					},
+					close() {
+						this.isOpen = false
+					},
+				}
+			}
+		</script>
+		<script
+			src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+			defer
+		></script>
+	</body>
+</html>
