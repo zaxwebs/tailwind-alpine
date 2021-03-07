@@ -10,10 +10,14 @@
 		/>
 		<title>Tailwind + Alpine</title>
 	</head>
-	<body x-data="sidebar()" class="bg-gray-200">
+	<body
+		x-data="sidebar()"
+		class="bg-gray-200"
+		@resize.window="handleResize()"
+	>
 		<div class="xl:flex">
 			<div
-				x-show="isOpen"
+				x-show="isOpen()"
 				class="fixed xl:static inset-0 flex bg-white bg-opacity-75 h-screen"
 			>
 				<div
@@ -23,7 +27,7 @@
 					<div class="flex bg-gray-900 content-between">
 						<div class="p-3 w-full">Project Sidebar</div>
 						<a
-							@click.prevent="close()"
+							@click.prevent="handleClose()"
 							class="p-3 hover:bg-indigo-500 flex-1 flex items-center"
 							href="#"
 						>
@@ -60,7 +64,7 @@
 			<div>
 				<nav class="text-gray-700 bg-white flex">
 					<a
-						@click.prevent="open()"
+						@click.prevent="handleOpen()"
 						class="p-3 hover:bg-indigo-500 hover:text-white"
 						href="#"
 					>
@@ -123,18 +127,38 @@
 		<script>
 			function sidebar() {
 				return {
-					isOpen: false,
-					open() {
-						this.isOpen = true
+					open: {
+						above: true,
+						below: false,
+					},
+					isAboveBreakpoint: window.innerWidth > 1280,
+
+					handleResize() {
+						this.isAboveBreakpoint = window.innerWidth > 1280
+					},
+
+					isOpen() {
+						if (this.isAboveBreakpoint) {
+							return this.open.above
+						}
+						return this.open.below
+					},
+					handleOpen() {
+						if (this.isAboveBreakpoint) {
+							this.open.above = true
+						}
+						this.open.below = true
+					},
+					handleClose() {
+						if (this.isAboveBreakpoint) {
+							this.open.above = false
+						}
+						this.open.below = false
 					},
 					handleAway() {
-						if (window.innerWidth < 1280) {
-							console.log(window.innerWidth)
-							this.isOpen = false
+						if (!this.isAboveBreakpoint) {
+							this.open.below = false
 						}
-					},
-					close() {
-						this.isOpen = false
 					},
 				}
 			}
