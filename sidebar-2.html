@@ -198,14 +198,16 @@
 		<script>
 			function sidebar() {
 				return {
+					breakpoint: 1280,
 					open: {
 						above: true,
 						below: false,
 					},
-					isAboveBreakpoint: window.innerWidth > 1280,
+					isAboveBreakpoint: window.innerWidth > this.breakpoint,
 
 					handleResize() {
-						this.isAboveBreakpoint = window.innerWidth > 1280
+						this.isAboveBreakpoint =
+							window.innerWidth > this.breakpoint
 					},
 
 					isOpen() {
