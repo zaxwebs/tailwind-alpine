@@ -12,7 +12,7 @@
 	</head>
 	<body
 		x-data="sidebar()"
-		class="bg-gray-200"
+		class="bg-gray-200 text-gray-700"
 		@resize.window="handleResize()"
 	>
 		<div class="xl:flex">
@@ -197,20 +197,20 @@
 		</div>
 		<script>
 			function sidebar() {
+				const breakpoint = 1280
 				return {
-					breakpoint: 1280,
 					open: {
 						above: true,
 						below: false,
 					},
-					isAboveBreakpoint: window.innerWidth > this.breakpoint,
+					isAboveBreakpoint: window.innerWidth > breakpoint,
 
 					handleResize() {
-						this.isAboveBreakpoint =
-							window.innerWidth > this.breakpoint
+						this.isAboveBreakpoint = window.innerWidth > breakpoint
 					},
 
 					isOpen() {
+						console.log(this.isAboveBreakpoint)
 						if (this.isAboveBreakpoint) {
 							return this.open.above
 						}
