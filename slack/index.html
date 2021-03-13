@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+			rel="stylesheet"
+		/>
+		<link href="css/custom.css" rel="stylesheet" />
+		<title>Slackish | Tailwind + Alpine</title>
+	</head>
+	<body x-data="slack()" class="flex items-stretch min-h-screen">
+		<div class="w-64 text-white bg-pink-900 text-opacity-70">
+			<div class="p-3 border-b border-white border-opacity-10">
+				<h1
+					class="mb-1 font-bold tracking-wide text-white text-opacity-100"
+				>
+					A1 Marketing Ltd
+				</h1>
+				<div class="flex items-center">
+					<div class="w-2 h-2 mr-2 bg-green-400 rounded-full"></div>
+					<div
+						class="text-gray-50 text-opacity-70"
+						x-text="users[currentUser].name"
+					></div>
+				</div>
+			</div>
+			<div class="p-3 border-b border-white border-opacity-10">
+				<h2 class="mb-1 font-semibold">Channels</h2>
+				<div class="pl-2">
+					<template x-for="(channel, index) in channels" :key="index">
+						<div class="mb-1">
+							<a href="#" class="mb-1.5">
+								<span>#</span>
+								<span x-text="channel.name"></span>
+							</a>
+						</div>
+					</template>
+				</div>
+			</div>
+		</div>
+		<script>
+			function slack() {
+				const currentUser = 0
+				const users = [
+					{
+						name: "Zack Webster",
+						image: "images/users/1.jpg",
+						online: true,
+					},
+				]
+				const channels = [
+					{ name: "announcements" },
+					{ name: "tailwind" },
+					{ name: "alpine" },
+				]
+
+				return {
+					currentUser,
+					users,
+					channels,
+				}
+			}
+		</script>
+		<script
+			src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+			defer
+		></script>
+	</body>
+</html>

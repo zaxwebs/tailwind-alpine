@@ -11,8 +11,8 @@
 		<title>Tailwind + Alpine</title>
 	</head>
 	<body class="bg-gray-100">
-		<div class="bg-indigo-500 text-white">
-			<div class="lg:container px-2 mx-auto py-4">
+		<div class="text-white bg-indigo-500">
+			<div class="px-2 py-4 mx-auto lg:container">
 				<h1 class="text-lg">Tailwind + Alpine</h1>
 				<p class="text-sm">
 					Random stuff built with Tailwind.css and Alpine.js. By Zack
@@ -20,16 +20,16 @@
 				</p>
 			</div>
 		</div>
-		<div class="lg:container px-2 mx-auto py-4">
-			<div x-data="data()" class="grid md:grid-cols-4 gap-4">
+		<div class="px-2 py-4 mx-auto lg:container">
+			<div x-data="data()" class="grid gap-4 md:grid-cols-4">
 				<template x-for="(project, index) in projects" :key="index">
 					<a
 						x-bind:href="project.url"
-						class="bg-white shadow-xl rounded overflow-hidden"
+						class="overflow-hidden bg-white rounded shadow-xl"
 					>
 						<div class="bg-indigo-900">
 							<img
-								class="object-cover h-48 w-full"
+								class="object-cover w-full h-48"
 								x-bind:src="project.image || 'images/drink.jpg'"
 								alt="Project image"
 							/>
@@ -40,7 +40,7 @@
 								x-text="project.name"
 							></h3>
 							<p
-								class="text-gray-400 text-sm"
+								class="text-sm text-gray-400"
 								x-text="project.description"
 							></p>
 						</div>
@@ -84,6 +84,11 @@
 							url: "sidebar-2.html",
 							name: "Sidebar",
 							description: "A responsive sidebar implementation.",
+						},
+						{
+							url: "slack",
+							name: "Slack",
+							description: "A slack clone.",
 						},
 					],
 				}
