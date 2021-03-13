@@ -66,7 +66,11 @@
 		<div class="flex-1 text-gray-800">
 			<div class="p-3 border-b border-dark border-opacity-10">
 				<div class="flex items-center">
-					<div class="w-2 h-2 mr-2 bg-green-400 rounded-full"></div>
+					<template x-if="getConversationType == 'user'">
+						<div
+							class="w-2 h-2 mr-2 bg-green-400 rounded-full"
+						></div>
+					</template>
 					<h1
 						x-text="getConversationTitle()"
 						class="mb-1 font-bold"
@@ -126,6 +130,7 @@
 				]
 				const channels = [
 					{ name: "general" },
+					{ name: "features" },
 					{ name: "announcements" },
 					{ name: "tailwind" },
 					{ name: "alpine" },
@@ -141,6 +146,17 @@
 						userId: 1,
 						text:
 							"Welcome to Slackish! A slack-ish clone built with Tailwind and Alpine.",
+					},
+					{
+						conversationId: "c-0",
+						userId: 2,
+						text:
+							"Head over to the features channel to see a list of features covered or added.",
+					},
+					{
+						conversationId: "c-0",
+						userId: 3,
+						text: "Thanks for checking this out.",
 					},
 				]
 
