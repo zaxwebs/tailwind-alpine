@@ -41,7 +41,10 @@
 			<div class="mb-3">
 				<h2 class="p-3 pb-1.5 font-semibold">Direct Messages</h2>
 				<template x-for="(user, index) in users" :key="index">
-					<div class="p-1.5 px-3 hover:bg-gray-900 cursor-pointer">
+					<div
+						@click="currentConversation = 'u-' + index"
+						class="p-1.5 px-3 hover:bg-gray-900 cursor-pointer"
+					>
 						<div class="flex items-center">
 							<div class="relative">
 								<div
@@ -69,13 +72,10 @@
 		<div class="flex-1 text-gray-800">
 			<div class="p-3 border-b border-dark border-opacity-10">
 				<div class="flex items-center">
-					<template
-						x-if="getConversableType(currentConversation) == 'user'"
-					>
-						<div
-							class="w-2 h-2 mr-2 bg-green-400 rounded-full"
-						></div>
-					</template>
+					<div
+						x-show="getConversableType(currentConversation) == 'user'"
+						class="w-2 h-2 mr-2 bg-green-400 rounded-full"
+					></div>
 					<h1
 						x-text="getConversationTitle(currentConversation)"
 						class="mb-1 font-bold"
