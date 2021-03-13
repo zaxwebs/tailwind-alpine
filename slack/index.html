@@ -52,11 +52,10 @@
 										x-bind:src="user.image"
 									/>
 								</div>
-								<template x-if="user.online">
-									<div
-										class="absolute w-3 h-3 mr-2 bg-green-400 border-2 border-gray-900 rounded-full -right-1 -bottom-1"
-									></div>
-								</template>
+								<div
+									x-show="user.online"
+									class="absolute w-3 h-3 mr-2 bg-green-400 border-2 border-gray-900 rounded-full -right-1 -bottom-1"
+								></div>
 							</div>
 							<div
 								class="text-gray-50 text-opacity-70"
@@ -70,13 +69,15 @@
 		<div class="flex-1 text-gray-800">
 			<div class="p-3 border-b border-dark border-opacity-10">
 				<div class="flex items-center">
-					<template x-if="getConversationType == 'user'">
+					<template
+						x-if="getConversableType(currentConversation) == 'user'"
+					>
 						<div
 							class="w-2 h-2 mr-2 bg-green-400 rounded-full"
 						></div>
 					</template>
 					<h1
-						x-text="getConversationTitle()"
+						x-text="getConversationTitle(currentConversation)"
 						class="mb-1 font-bold"
 					></h1>
 				</div>
@@ -164,22 +165,26 @@
 					},
 				]
 
-				function getConversationType() {
-					if (currentConversation.split("-")[0] === "c") {
+				function getConversableType(conversationId) {
+					if (conversationId.split("-")[0] === "c") {
 						return "channel"
 					}
 					return "user"
 				}
 
-				function getConversationId() {
-					return currentConversation.split("-")[1]
+				function getConversableId(conversationId) {
+					return conversationId.split("-")[1]
 				}
 
-				function getConversationTitle() {
-					if (getConversationType() === "channel") {
-						return "#" + channels[getConversationId()].name
+				function getConversationTitle(conversationId) {
+					console.log(conversationId)
+					if (getConversableType(conversationId) === "channel") {
+						return (
+							"#" +
+							channels[getConversableId(conversationId)].name
+						)
 					} else {
-						return users[getConversationId()].name
+						return users[getConversableId(conversationId)].name
 					}
 				}
 
@@ -188,8 +193,8 @@
 					users,
 					channels,
 					messages,
-					getConversationType,
-					getConversationId,
+					getConversableType,
+					getConversableId,
 					getConversationTitle,
 					currentConversation,
 				}
