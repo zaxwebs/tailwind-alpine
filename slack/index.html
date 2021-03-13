@@ -30,7 +30,7 @@
 			<div class="mb-3">
 				<h2 class="p-3 pb-1.5 font-semibold">Channels</h2>
 				<template x-for="(channel, index) in channels" :key="index">
-					<div class="p-1.5 px-3 hover:bg-gray-900">
+					<div class="p-1.5 px-3 hover:bg-gray-900 cursor-pointer">
 						<span>#</span>
 						<span x-text="channel.name"></span>
 					</div>
@@ -39,15 +39,22 @@
 			<div class="mb-3">
 				<h2 class="p-3 pb-1.5 font-semibold">Direct Messages</h2>
 				<template x-for="(user, index) in users" :key="index">
-					<div class="p-1.5 px-3 hover:bg-gray-900">
+					<div class="p-1.5 px-3 hover:bg-gray-900 cursor-pointer">
 						<div class="flex items-center">
-							<div
-								class="mr-2 overflow-hidden bg-green-400 rounded"
-							>
-								<img
-									class="object-cover w-6 h-6"
-									x-bind:src="user.image"
-								/>
+							<div class="relative">
+								<div
+									class="mr-2 overflow-hidden bg-green-400 rounded"
+								>
+									<img
+										class="object-cover w-6 h-6"
+										x-bind:src="user.image"
+									/>
+								</div>
+								<template x-if="user.online">
+									<div
+										class="absolute w-3 h-3 mr-2 bg-green-400 border-2 border-gray-900 rounded-full -right-1 -bottom-1"
+									></div>
+								</template>
 							</div>
 							<div
 								class="text-gray-50 text-opacity-70"
