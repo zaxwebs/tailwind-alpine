@@ -29,8 +29,9 @@
 				<h2 class="p-3 pb-1.5 font-semibold">Channels</h2>
 				<template x-for="(channel, index) in channels" :key="index">
 					<div
-						@click="setCurrentConversation('c-' + index)"
+						@click="currentConversation = 'c-' + index"
 						class="p-1.5 px-3 hover:bg-gray-900 cursor-pointer"
+						:class="{ 'bg-indigo-500 hover:bg-indigo-500 text-white' : currentConversation === 'c-' + index}"
 					>
 						<span>#</span>
 						<span x-text="channel.name"></span>
@@ -182,10 +183,6 @@
 					}
 				}
 
-				function setCurrentConversation(conversationString) {
-					currentConversation = conversationString
-				}
-
 				return {
 					currentUser,
 					users,
@@ -194,7 +191,6 @@
 					getConversationType,
 					getConversationId,
 					getConversationTitle,
-					setCurrentConversation,
 					currentConversation,
 				}
 			}
