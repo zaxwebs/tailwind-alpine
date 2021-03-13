@@ -28,7 +28,10 @@
 			<div class="mb-3">
 				<h2 class="p-3 pb-1.5 font-semibold">Channels</h2>
 				<template x-for="(channel, index) in channels" :key="index">
-					<div class="p-1.5 px-3 hover:bg-gray-900 cursor-pointer">
+					<div
+						@click="setCurrentConversation('c-' + index)"
+						class="p-1.5 px-3 hover:bg-gray-900 cursor-pointer"
+					>
 						<span>#</span>
 						<span x-text="channel.name"></span>
 					</div>
@@ -105,7 +108,7 @@
 		<script>
 			function slack() {
 				const currentUser = 0
-				const currentConversation = "c-0"
+				let currentConversation = "c-0"
 				const users = [
 					{
 						name: "Zack Webster",
@@ -179,6 +182,10 @@
 					}
 				}
 
+				function setCurrentConversation(conversationString) {
+					currentConversation = conversationString
+				}
+
 				return {
 					currentUser,
 					users,
@@ -187,6 +194,8 @@
 					getConversationType,
 					getConversationId,
 					getConversationTitle,
+					setCurrentConversation,
+					currentConversation,
 				}
 			}
 		</script>
