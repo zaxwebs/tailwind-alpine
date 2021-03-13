@@ -12,7 +12,7 @@
 		<title>Slackish | Tailwind + Alpine</title>
 	</head>
 	<body x-data="slack()" class="flex items-stretch min-h-screen">
-		<div class="w-64 text-white bg-pink-900 text-opacity-70">
+		<div class="w-64 text-white bg-gray-800 text-opacity-70">
 			<div class="p-3 border-b border-white border-opacity-10">
 				<h1
 					class="mb-1 font-bold tracking-wide text-white text-opacity-100"
@@ -27,18 +27,35 @@
 					></div>
 				</div>
 			</div>
-			<div class="p-3 border-b border-white border-opacity-10">
-				<h2 class="mb-1 font-semibold">Channels</h2>
-				<div class="pl-2">
-					<template x-for="(channel, index) in channels" :key="index">
-						<div class="mb-1">
-							<a href="#" class="mb-1.5">
-								<span>#</span>
-								<span x-text="channel.name"></span>
-							</a>
+			<div class="mb-3">
+				<h2 class="p-3 pb-1.5 font-semibold">Channels</h2>
+				<template x-for="(channel, index) in channels" :key="index">
+					<div class="p-1.5 px-3 hover:bg-gray-900">
+						<span>#</span>
+						<span x-text="channel.name"></span>
+					</div>
+				</template>
+			</div>
+			<div class="mb-3">
+				<h2 class="p-3 pb-1.5 font-semibold">Direct Messages</h2>
+				<template x-for="(user, index) in users" :key="index">
+					<div class="p-1.5 px-3 hover:bg-gray-900">
+						<div class="flex items-center">
+							<div
+								class="mr-2 overflow-hidden bg-green-400 rounded"
+							>
+								<img
+									class="object-cover w-6 h-6"
+									x-bind:src="user.image"
+								/>
+							</div>
+							<div
+								class="text-gray-50 text-opacity-70"
+								x-text="user.name"
+							></div>
 						</div>
-					</template>
-				</div>
+					</div>
+				</template>
 			</div>
 		</div>
 		<script>
@@ -48,6 +65,21 @@
 					{
 						name: "Zack Webster",
 						image: "images/users/1.jpg",
+						online: true,
+					},
+					{
+						name: "Emma Wilson",
+						image: "images/users/2.jpg",
+						online: true,
+					},
+					{
+						name: "James Clark",
+						image: "images/users/3.jpg",
+						online: false,
+					},
+					{
+						name: "Nova Lee",
+						image: "images/users/4.jpg",
 						online: true,
 					},
 				]
