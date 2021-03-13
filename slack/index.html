@@ -85,7 +85,10 @@
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 				</p>
 			</div>
-			<template x-for="(message, index) in messages" :key="index">
+			<template
+				x-for="(message, index) in getConversationMessages(currentConversation)"
+				:key="index"
+			>
 				<div class="hover:bg-gray-100">
 					<div class="flex p-3">
 						<div class="mr-2">
@@ -188,6 +191,12 @@
 					}
 				}
 
+				function getConversationMessages(conversationId) {
+					return messages.filter(
+						(message) => message.conversationId === conversationId
+					)
+				}
+
 				return {
 					currentUser,
 					users,
@@ -197,6 +206,7 @@
 					getConversableId,
 					getConversationTitle,
 					currentConversation,
+					getConversationMessages,
 				}
 			}
 		</script>
