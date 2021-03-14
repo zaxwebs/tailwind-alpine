@@ -134,6 +134,14 @@ function slack() {
 				userId: this.currentUser,
 				text: message,
 			})
+			this.updateScroll()
+		},
+		updateScroll() {
+			setTimeout(() => {
+				const chatBox = document.getElementById("chat-box")
+				const chatBoxHeight = chatBox.scrollHeight
+				chatBox.scrollTop = chatBoxHeight
+			}, 0)
 		},
 	}
 }

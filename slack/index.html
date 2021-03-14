@@ -11,7 +11,11 @@
 		<link href="css/custom.css" rel="stylesheet" />
 		<title>Slackish | Tailwind + Alpine</title>
 	</head>
-	<body x-data="slack()" class="flex items-stretch min-h-screen">
+	<body
+		x-data="slack()"
+		x-init="updateScroll()"
+		class="flex items-stretch min-h-screen"
+	>
 		<div
 			class="w-64 text-white bg-gray-800 text-opacity-70 max-h-screen flex flex-col"
 		>
@@ -90,7 +94,10 @@
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 					</p>
 				</div>
-				<div class="flex flex-col flex-grow overflow-y-auto h-0">
+				<div
+					id="chat-box"
+					class="flex flex-col flex-grow overflow-y-auto h-0"
+				>
 					<div class="mt-auto">
 						<template
 							x-for="(message, index) in getConversationMessages()"
