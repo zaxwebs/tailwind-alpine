@@ -88,6 +88,11 @@ const initialMessages = [
 		text: "Custom scroll bars similar to Slack.",
 	},
 	{
+		conversationId: "c-1",
+		userId: 0,
+		text: "Auto scroll on conversation switch.",
+	},
+	{
 		conversationId: "u-0",
 		userId: 0,
 		text: "This is my personal message space.",
