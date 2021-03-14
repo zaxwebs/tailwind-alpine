@@ -122,9 +122,9 @@
 			</div>
 			<div class="p-3">
 				<textarea
-					@keydown.enter="console.log('OK')"
-					x-model="eval(getConversableString()).message"
-					x-bind:placeholder="'Message ' + getConversationTitle()"
+					@keydown.enter="submitMessage()"
+					x-model="eval(getConversableString(currentConversation)).message"
+					x-bind:placeholder="'Message ' + getConversationTitle(currentConversation)"
 					class="w-full border border-gray-400 p-3 rounded"
 				></textarea>
 			</div>

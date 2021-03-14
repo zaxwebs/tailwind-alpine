@@ -88,30 +88,36 @@ function slack() {
 		},
 	]
 
-	function getConversableType() {
-		if (currentConversation.split("-")[0] === "c") {
+	function getConversableType(conversationId) {
+		if (conversationId.split("-")[0] === "c") {
 			return "channel"
 		}
 		return "user"
 	}
 
-	function getConversableId() {
-		return currentConversation.split("-")[1]
+	function getConversableId(conversationId) {
+		return conversationId.split("-")[1]
 	}
 
-	function getConversableString() {
-		return getConversableType() + "s" + "[" + getConversableId() + "]"
+	function getConversableString(conversationId) {
+		return (
+			getConversableType(conversationId) +
+			"s" +
+			"[" +
+			getConversableId(conversationId) +
+			"]"
+		)
 	}
 
-	function getConversable() {
-		return eval(getConversableString())
+	function getConversable(conversationId) {
+		return eval(getConversableString(conversationId))
 	}
 
-	function getConversationTitle() {
-		if (getConversableType() === "channel") {
-			return "#" + channels[getConversableId()].name
+	function getConversationTitle(conversationId) {
+		if (getConversableType(conversationId) === "channel") {
+			return "#" + channels[getConversableId(conversationId)].name
 		} else {
-			return users[getConversableId()].name
+			return users[getConversableId(conversationId)].name
 		}
 	}
 
@@ -121,7 +127,24 @@ function slack() {
 		)
 	}
 
-	function submitMessage() {}
+	function submitMessage() {
+		/*
+		const conversationId = currentConversation
+		const message = getConversable(conversationId).message
+		const index = getConversableId(conversationId)
+		if (getConversableType(conversationId) == "channel") {
+			channels[index].message = ""
+		} else {
+			users[index].message = ""
+		}
+		const newMessage = {
+			conversationId: "c-1",
+			userId: currentUser,
+			text: message,
+		}
+		messages.push(newMessage) 
+		*/
+	}
 
 	return {
 		currentUser,
