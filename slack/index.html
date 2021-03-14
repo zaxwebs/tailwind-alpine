@@ -83,7 +83,8 @@
 					<div class="flex items-center">
 						<div
 							x-show="getConversableType() == 'user'"
-							class="w-2 h-2 mr-2 bg-green-400 rounded-full"
+							class="w-2 h-2 mr-2 bg-gray-400 rounded-full"
+							:class="{'bg-green-400' : getConversable().online}"
 						></div>
 						<h1
 							x-text="getConversationTitle()"
