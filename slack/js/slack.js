@@ -97,6 +97,14 @@ function slack() {
 		getConversableId() {
 			return this.currentConversation.split("-")[1]
 		},
+		getConversable() {
+			const id = this.getConversableId()
+			if (this.getConversableType() === "channel") {
+				return this.channels[id]
+			} else {
+				return this.users[id]
+			}
+		},
 		getConversableString() {
 			return (
 				this.getConversableType() +
@@ -118,6 +126,15 @@ function slack() {
 				(message) => message.conversationId === this.currentConversation
 			)
 		},
-		submitMessage() {},
+		submitMessage() {
+			const message = this.getConversable().message
+			this.getConversable().message = ""
+			console.log(this.getConversable())
+			this.messages.push({
+				conversationId: this.currentConversation,
+				userId: this.currentUser,
+				text: message,
+			})
+		},
 	}
 }
