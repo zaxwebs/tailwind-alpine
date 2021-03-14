@@ -54,6 +54,7 @@ function slack() {
 		messages: initialMessages,
 		updateCurrentConversation(conversationId) {
 			this.currentConversation = conversationId
+			this.updateScroll()
 		},
 		getConversableType() {
 			if (this.currentConversation.split("-")[0] === "c") {
