@@ -6,33 +6,37 @@ function slack() {
 			name: "Zack Webster",
 			image: "images/users/1.jpg",
 			online: true,
+			message: "",
 		},
 		{
 			name: "Emma Wilson",
 			image: "images/users/2.jpg",
 			online: true,
+			message: "",
 		},
 		{
 			name: "James Clark",
 			image: "images/users/3.jpg",
 			online: false,
+			message: "",
 		},
 		{
 			name: "Nova Lee",
 			image: "images/users/4.jpg",
 			online: true,
+			message: "",
 		},
 	]
 	const channels = [
-		{ name: "general" },
-		{ name: "features" },
-		{ name: "announcements" },
-		{ name: "tailwind" },
-		{ name: "alpine" },
-		{ name: "vue" },
-		{ name: "react" },
-		{ name: "laravel" },
-		{ name: "livewire" },
+		{ name: "general", message: "" },
+		{ name: "features", message: "" },
+		{ name: "announcements", message: "" },
+		{ name: "tailwind", message: "" },
+		{ name: "alpine", message: "" },
+		{ name: "vue", message: "" },
+		{ name: "react", message: "" },
+		{ name: "laravel", message: "" },
+		{ name: "livewire", message: "" },
 	]
 	const messages = [
 		{
@@ -84,22 +88,30 @@ function slack() {
 		},
 	]
 
-	function getConversableType(conversationId) {
-		if (conversationId.split("-")[0] === "c") {
+	function getConversableType() {
+		if (currentConversation.split("-")[0] === "c") {
 			return "channel"
 		}
 		return "user"
 	}
 
-	function getConversableId(conversationId) {
-		return conversationId.split("-")[1]
+	function getConversableId() {
+		return currentConversation.split("-")[1]
 	}
 
-	function getConversationTitle(conversationId) {
-		if (getConversableType(conversationId) === "channel") {
-			return "#" + channels[getConversableId(conversationId)].name
+	function getConversableString() {
+		return getConversableType() + "s" + "[" + getConversableId() + "]"
+	}
+
+	function getConversable() {
+		return eval(getConversableString())
+	}
+
+	function getConversationTitle() {
+		if (getConversableType() === "channel") {
+			return "#" + channels[getConversableId()].name
 		} else {
-			return users[getConversableId(conversationId)].name
+			return users[getConversableId()].name
 		}
 	}
 
@@ -109,6 +121,8 @@ function slack() {
 		)
 	}
 
+	function submitMessage() {}
+
 	return {
 		currentUser,
 		users,
@@ -116,8 +130,10 @@ function slack() {
 		messages,
 		getConversableType,
 		getConversableId,
+		getConversableString,
 		getConversationTitle,
 		currentConversation,
 		getConversationMessages,
+		submitMessage,
 	}
 }
