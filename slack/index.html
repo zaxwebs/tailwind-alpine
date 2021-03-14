@@ -78,11 +78,11 @@
 				<div class="p-3 border-b border-dark border-opacity-10">
 					<div class="flex items-center">
 						<div
-							x-show="getConversableType(currentConversation) == 'user'"
+							x-show="getConversableType() == 'user'"
 							class="w-2 h-2 mr-2 bg-green-400 rounded-full"
 						></div>
 						<h1
-							x-text="getConversationTitle(currentConversation)"
+							x-text="getConversationTitle()"
 							class="mb-1 font-bold"
 						></h1>
 					</div>
@@ -93,7 +93,7 @@
 				<div class="flex flex-col flex-grow overflow-y-auto h-0">
 					<div class="mt-auto">
 						<template
-							x-for="(message, index) in getConversationMessages(currentConversation)"
+							x-for="(message, index) in getConversationMessages()"
 							:key="index"
 						>
 							<div class="hover:bg-gray-100">
@@ -123,8 +123,8 @@
 			<div class="p-3">
 				<textarea
 					@keydown.enter.prevent="submitMessage()"
-					x-model="eval(getConversableString(currentConversation)).message"
-					x-bind:placeholder="'Message ' + getConversationTitle(currentConversation)"
+					x-model="eval(getConversableString()).message"
+					x-bind:placeholder="'Message ' + getConversationTitle()"
 					class="w-full border border-gray-400 p-3 rounded"
 				></textarea>
 			</div>
