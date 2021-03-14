@@ -129,7 +129,6 @@ function slack() {
 		submitMessage() {
 			const message = this.getConversable().message
 			this.getConversable().message = ""
-			console.log(this.getConversable())
 			this.messages.push({
 				conversationId: this.currentConversation,
 				userId: this.currentUser,
