@@ -65,12 +65,27 @@ const initialMessages = [
 	{
 		conversationId: "c-1",
 		userId: 0,
-		text: "Display user status indicator for DMs.",
+		text: "Display user online status indicator for DMs.",
 	},
 	{
 		conversationId: "c-1",
 		userId: 0,
-		text: "Indicate active conversation in sidebar",
+		text: "Indicate active conversation in sidebar.",
+	},
+	{
+		conversationId: "c-1",
+		userId: 0,
+		text: "Display user online status indicator on title bar for DMs.",
+	},
+	{
+		conversationId: "c-1",
+		userId: 0,
+		text: "Auto scroll chat on new message.",
+	},
+	{
+		conversationId: "c-1",
+		userId: 0,
+		text: "Custom scroll bars similar to Slack.",
 	},
 	{
 		conversationId: "u-0",
