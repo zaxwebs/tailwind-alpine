@@ -1,7 +1,17 @@
-.bg-slack {
-	background-color: #3f0e40;
+::-webkit-scrollbar {
+	width: 6px;
 }
 
-.bg-slack-dark {
-	background-color: #2c0c2c;
+::-webkit-scrollbar-track {
+	border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(99, 102, 241, 0.7);
+	border-radius: 3px;
+}
+
+#conversation-list::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, 0.7);
+	border-radius: 3px;
 }
