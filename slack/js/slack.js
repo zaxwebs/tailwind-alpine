@@ -96,6 +96,9 @@ function slack() {
 		},
 		submitMessage() {
 			const message = this.getConversable().message
+			if (message === "") {
+				return
+			}
 			this.getConversable().message = ""
 			this.messages.push({
 				conversationId: this.currentConversation,
