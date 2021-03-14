@@ -36,7 +36,7 @@
 					<h2 class="p-3 pb-1.5 font-semibold">Channels</h2>
 					<template x-for="(channel, index) in channels" :key="index">
 						<div
-							@click="currentConversation = 'c-' + index"
+							@click="updateCurrentConversation('c-' + index)"
 							class="p-1.5 px-3 hover:bg-gray-900 cursor-pointer"
 							:class="{ 'bg-indigo-500 hover:bg-indigo-500 text-white' : currentConversation === 'c-' + index}"
 						>
@@ -49,7 +49,7 @@
 					<h2 class="p-3 pb-1.5 font-semibold">Direct Messages</h2>
 					<template x-for="(user, index) in users" :key="index">
 						<div
-							@click="currentConversation = 'u-' + index"
+							@click="updateCurrentConversation('u-' + index)"
 							class="p-1.5 px-3 hover:bg-gray-900 cursor-pointer"
 							:class="{ 'bg-indigo-500 hover:bg-indigo-500 text-white' : currentConversation === 'u-' + index}"
 						>

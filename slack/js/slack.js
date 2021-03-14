@@ -52,6 +52,9 @@ function slack() {
 			{ name: "livewire", message: "" },
 		],
 		messages: initialMessages,
+		updateCurrentConversation(conversationId) {
+			this.currentConversation = conversationId
+		},
 		getConversableType() {
 			if (this.currentConversation.split("-")[0] === "c") {
 				return "channel"
