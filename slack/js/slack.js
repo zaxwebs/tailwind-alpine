@@ -27,6 +27,18 @@ function slack() {
 				online: true,
 				message: "",
 			},
+			{
+				name: "Max Alexander",
+				image: "images/users/5.jpg",
+				online: true,
+				message: "",
+			},
+			{
+				name: "Elisa Fox",
+				image: "images/users/6.jpg",
+				online: false,
+				message: "",
+			},
 		],
 		channels: [
 			{ name: "general", message: "" },
