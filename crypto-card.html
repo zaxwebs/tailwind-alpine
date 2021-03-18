@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+			rel="stylesheet"
+		/>
+		<title>Tailwind + Alpine</title>
+	</head>
+	<body class="flex items-center justify-center bg-gray-900 min-h-screen">
+		<div
+			x-data="card()"
+			x-init="fetchBPI()"
+			class="w-96 text-white bg-gradient-to-r from-yellow-400 to-yellow-500 p-4 rounded shadow font-medium"
+		>
+			<div class="flex justify-between">
+				<h3 class="font-semibold">Bitcoin</h3>
+				<div>
+					<span x-text="formatUSD(bpi.rate_float)">0</span>
+					USD
+				</div>
+			</div>
+			<div class="flex justify-between items-end">
+				<div><span class="text-4xl" x-text="amount">0</span> BTC</div>
+				<div>
+					<span class="" x-text="formatUSD(bpi.rate_float * amount)"
+						>0</span
+					>
+					USD
+				</div>
+			</div>
+		</div>
+		<script>
+			function card() {
+				return {
+					amount: 2.924,
+					bpi: {
+						rate: 0,
+						rate_float: 0,
+					},
+					fetchBPI() {
+						fetch(
+							"https://api.coindesk.com/v1/bpi/currentprice.json"
+						)
+							.then((res) => res.json())
+							.then((data) => {
+								this.bpi = data.bpi.USD
+							})
+					},
+					formatUSD(amount) {
+						return new Intl.NumberFormat().format(amount)
+					},
+					formatBTC(amount) {
+						return new Intl.NumberFormat().format(amount)
+					},
+				}
+			}
+		</script>
+		<script
+			src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+			defer
+		></script>
+	</body>
+</html>
