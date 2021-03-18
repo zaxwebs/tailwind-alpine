@@ -24,7 +24,10 @@
 				</div>
 			</div>
 			<div class="flex justify-between items-end">
-				<div><span class="text-4xl" x-text="amount">0</span> BTC</div>
+				<div>
+					<span class="text-4xl" x-text="formatBTC(amount)">0</span>
+					BTC
+				</div>
 				<div>
 					<span class="" x-text="formatUSD(bpi.rate_float * amount)"
 						>0</span
@@ -36,7 +39,7 @@
 		<script>
 			function card() {
 				return {
-					amount: 2.924,
+					amount: 2.9247433,
 					bpi: {
 						rate: 0,
 						rate_float: 0,
@@ -51,10 +54,14 @@
 							})
 					},
 					formatUSD(amount) {
-						return new Intl.NumberFormat().format(amount)
+						return new Intl.NumberFormat("en-US", {
+							maximumFractionDigits: 2,
+						}).format(amount)
 					},
 					formatBTC(amount) {
-						return new Intl.NumberFormat().format(amount)
+						return new Intl.NumberFormat("en-US", {
+							maximumFractionDigits: 6,
+						}).format(amount)
 					},
 				}
 			}
