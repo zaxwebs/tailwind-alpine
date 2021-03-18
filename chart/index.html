@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+			rel="stylesheet"
+		/>
+		<title>Tailwind + Alpine</title>
+	</head>
+	<body class="flex items-center justify-center bg-gray-900 min-h-screen p-1">
+		<div class="bg-white max-w-md w-full p-3 relative">
+			<div id="chart"></div>
+			<button class="bg-blue-500 text-white px-3 py-2 absolute right-0 bottom-0" x-data="xChart()" x-show="!fetched" @click="simulateFetch()">Fetch Data</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+		<script src="js/apex.js"></script>
+		<script src="js/alpine.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+			defer
+		></script>
+	</body>
+</html>
