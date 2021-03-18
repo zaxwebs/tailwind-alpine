@@ -11,11 +11,11 @@
 		<title>Tailwind + Alpine</title>
 	</head>
 	<body class="flex items-center justify-center bg-gray-900 min-h-screen p-1">
-		<div>
+		<div class="max-w-md w-full">
 			<div
 				x-data="card()"
 				x-init="fetchBPI()"
-				class="relative max-w-96 w-full text-white bg-gradient-to-r from-yellow-400 to-yellow-500 rounded shadow font-medium mb-1"
+				class="relative text-white bg-gradient-to-r from-yellow-400 to-yellow-500 rounded shadow font-medium mb-1"
 			>
 				<div
 					class="absolute pointer-events-none w-full overflow-hidden"
