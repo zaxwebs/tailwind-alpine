@@ -14,7 +14,7 @@
 		<div class="max-w-md w-full">
 			<div
 				x-data="card()"
-				x-init="fetchBPI()"
+				x-init="init()"
 				class="relative text-white bg-gradient-to-r from-yellow-400 to-yellow-500 rounded shadow font-medium mb-1"
 			>
 				<div
@@ -81,6 +81,18 @@
 						return new Intl.NumberFormat("en-US", {
 							maximumFractionDigits: 6,
 						}).format(amount)
+					},
+					incrementAmount() {
+						this.amount += 0.000001
+					},
+					init() {
+						this.fetchBPI()
+						setInterval(() => {
+							this.fetchBPI()
+						}, 10000)
+						setInterval(() => {
+							this.incrementAmount()
+						}, 1000)
 					},
 				}
 			}
