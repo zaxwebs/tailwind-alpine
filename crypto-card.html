@@ -10,32 +10,44 @@
 		/>
 		<title>Tailwind + Alpine</title>
 	</head>
-	<body class="flex items-center justify-center bg-gray-900 min-h-screen">
-		<div
-			x-data="card()"
-			x-init="fetchBPI()"
-			class="w-96 text-white bg-gradient-to-r from-yellow-400 to-yellow-500 p-4 rounded shadow font-medium"
-		>
-			<div class="flex justify-between">
-				<h3 class="font-semibold">Bitcoin</h3>
-				<div>
-					<span x-text="formatUSD(bpi.rate_float)">0</span>
-					USD
+	<body class="flex items-center justify-center bg-gray-900 min-h-screen p-1">
+		<div>
+			<div
+				x-data="card()"
+				x-init="fetchBPI()"
+				class="w-96 text-white bg-gradient-to-r from-yellow-400 to-yellow-500 p-4 rounded shadow font-medium mb-1"
+			>
+				<div class="flex justify-between">
+					<h3 class="font-semibold">Bitcoin</h3>
+					<div>
+						<span x-text="formatUSD(bpi.rate_float)">0</span>
+						USD
+					</div>
+				</div>
+				<div class="flex justify-between items-end flex-wrap">
+					<div>
+						<span class="text-4xl" x-text="formatBTC(amount)"
+							>0</span
+						>
+						BTC
+					</div>
+					<div>
+						<span
+							class=""
+							x-text="formatUSD(bpi.rate_float * amount)"
+							>0</span
+						>
+						USD
+					</div>
 				</div>
 			</div>
-			<div class="flex justify-between items-end">
-				<div>
-					<span class="text-4xl" x-text="formatBTC(amount)">0</span>
-					BTC
-				</div>
-				<div>
-					<span class="" x-text="formatUSD(bpi.rate_float * amount)"
-						>0</span
-					>
-					USD
-				</div>
-			</div>
+			<a
+				class="text-white text-sm text-opacity-30 hover:text-opacity-50"
+				href="https://www.coindesk.com/price/bitcoin"
+				>Powered by CoinDesk</a
+			>
 		</div>
+
 		<script>
 			function card() {
 				return {
