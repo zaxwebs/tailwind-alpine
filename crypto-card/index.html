@@ -15,29 +15,34 @@
 			<div
 				x-data="card()"
 				x-init="fetchBPI()"
-				class="w-96 text-white bg-gradient-to-r from-yellow-400 to-yellow-500 p-4 rounded shadow font-medium mb-1"
+				class="relative w-96 text-white bg-gradient-to-r from-yellow-400 to-yellow-500 p-4 rounded shadow font-medium mb-1 overflow-hidden"
 			>
-				<div class="flex justify-between">
-					<h3 class="font-semibold">Bitcoin</h3>
-					<div>
-						<span x-text="formatUSD(bpi.rate_float)">0</span>
-						USD
-					</div>
+				<div class="absolute pointer-events-none">
+					<img class="object-cover" src="images/a.png" />
 				</div>
-				<div class="flex justify-between items-end flex-wrap">
-					<div>
-						<span class="text-4xl" x-text="formatBTC(amount)"
-							>0</span
-						>
-						BTC
+				<div class="z-10">
+					<div class="flex justify-between">
+						<h3 class="font-semibold">Bitcoin</h3>
+						<div>
+							<span x-text="formatUSD(bpi.rate_float)">0</span>
+							USD
+						</div>
 					</div>
-					<div>
-						<span
-							class=""
-							x-text="formatUSD(bpi.rate_float * amount)"
-							>0</span
-						>
-						USD
+					<div class="flex justify-between items-end flex-wrap">
+						<div>
+							<span class="text-4xl" x-text="formatBTC(amount)"
+								>0</span
+							>
+							BTC
+						</div>
+						<div>
+							<span
+								class=""
+								x-text="formatUSD(bpi.rate_float * amount)"
+								>0</span
+							>
+							USD
+						</div>
 					</div>
 				</div>
 			</div>
