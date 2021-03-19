@@ -11,13 +11,12 @@
 		<title>Tailwind + Alpine</title>
 	</head>
 	<body class="flex items-center justify-center bg-gray-900 min-h-screen p-1">
-		<div class="bg-white max-w-md w-full p-3 relative">
-			<div id="chart"></div>
-			<button class="bg-blue-500 text-white px-3 py-2 absolute right-0 bottom-0" x-data="xChart()" x-show="!fetched" @click="simulateFetch()">Fetch Data</div>
+		<div x-data="chart()" x-init="init()" class="bg-white max-w-md w-full p-3 relative">
+			<div x-ref="chart"></div>
+			<button class="bg-blue-500 text-white px-3 py-2 absolute right-0 bottom-0" x-show="!fetched" @click="simulateFetch()">Fetch Data</div>
 		</div>
-		<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-		<script src="js/apex.js"></script>
-		<script src="js/alpine.js"></script>
+		<script src="./js/chart.js" defer></script>
+		<script src="https://cdn.jsdelivr.net/npm/apexcharts" defer></script>
 		<script
 			src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
 			defer
