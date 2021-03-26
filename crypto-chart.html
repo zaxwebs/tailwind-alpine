@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+			rel="stylesheet"
+		/>
+		<title>Tailwind + Alpine</title>
+	</head>
+	<body
+		class="flex items-center justify-center min-h-screen bg-gray-900"
+		x-data="chart()"
+		x-init="init()"
+	>
+		<div class="bg-white p-6">
+			<div id="chart-wrapper"></div>
+			<a
+				class="text-grey-900 text-xs text-opacity-30 hover:text-opacity-50 hover:underline"
+				href="https://www.coindesk.com/price/bitcoin"
+				>Powered by CoinDesk</a
+			>
+		</div>
+		<script>
+			function chart() {
+				return {
+					chart: null,
+					bpi: [],
+					init() {
+						//fetch bpi
+						fetch(
+							"https://api.coindesk.com/v1/bpi/historical/close.json"
+						)
+							.then((res) => res.json())
+							.then((data) => {
+								const bpi = data.bpi
+								for (const [key, value] of Object.entries(
+									bpi
+								)) {
+									this.bpi.push({ time: key, value: value })
+								}
+								//create chart
+								this.chart = LightweightCharts.createChart(
+									document.querySelector("#chart-wrapper"),
+									{
+										width: 400,
+										height: 300,
+										localization: {
+											priceFormatter: (price) =>
+												"$" + price,
+										},
+										priceScale: {
+											position: "left",
+										},
+									}
+								)
+								const lineSeries = this.chart.addLineSeries()
+								lineSeries.setData(this.bpi)
+							})
+					},
+				}
+			}
+		</script>
+		<script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+			defer
+		></script>
+	</body>
+</html>
