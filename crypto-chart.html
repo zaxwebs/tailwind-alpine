@@ -53,11 +53,32 @@
 										},
 										priceScale: {
 											position: "left",
+											borderColor:
+												"rgba(70, 130, 180, 0.5)",
+										},
+										timeScale: {
+											borderColor:
+												"rgba(70, 130, 180, 0.5)",
+										},
+										grid: {
+											vertLines: {
+												color:
+													"rgba(70, 130, 180, 0.1)",
+												style: 1,
+												visible: true,
+											},
+											horzLines: {
+												color:
+													"rgba(70, 130, 180, 0.1)",
+												style: 1,
+												visible: true,
+											},
 										},
 									}
 								)
 								const series = this.chart.addAreaSeries()
 								series.setData(this.bpi)
+								this.chart.timeScale().applyOptions({})
 								this.chart.timeScale().fitContent()
 							})
 					},
