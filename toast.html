@@ -11,14 +11,37 @@
 		<title>Tailwind + Alpine</title>
 	</head>
 	<body class="relative">
-		<div class="min-h-screen flex justify-center items-center">
-			<button
-				x-data
-				@click="$store.toasts.createToast('This is a test toast message. '+ Math.random())"
-				class="bg-blue-600 text-white p-3"
-			>
-				Create Test Toast
-			</button>
+		<div class="min-h-screen flex justify-center items-center p-3">
+			<div class="grid grid-cols-2 gap-4">
+				<button
+					x-data
+					@click="$store.toasts.createToast('This is a test toast message.')"
+					class="bg-gray-700 border-t-4 border-blue-600 text-white p-3"
+				>
+					Create Info Test Toast
+				</button>
+				<button
+					x-data
+					@click="$store.toasts.createToast('This is a test toast message.', 'success')"
+					class="bg-gray-700 border-t-4 border-green-600 text-white p-3"
+				>
+					Create Success Test Toast
+				</button>
+				<button
+					x-data
+					@click="$store.toasts.createToast('This is a test toast message.', 'warning')"
+					class="bg-gray-700 border-t-4 border-yellow-500 text-white p-3"
+				>
+					Create Warning Test Toast
+				</button>
+				<button
+					x-data
+					@click="$store.toasts.createToast('This is a test toast message.', 'error')"
+					class="bg-gray-700 border-t-4 border-red-600 text-white p-3"
+				>
+					Create Error Test Toast
+				</button>
+			</div>
 		</div>
 		<div x-data class="absolute top-0 right-0 p-4 overflow-x-hidden">
 			<template
@@ -34,8 +57,14 @@
 					x-transition:leave="transition ease-out duration-500"
 					x-transition:leave-start="transform translate-x-0 opacity-100"
 					x-transition:leave-end="transform translate-x-full opacity-0"
-					x-text="toast.message + ' ' + toast.id"
-					class="bg-gray-900 text-white p-3 rounded mb-3"
+					x-text="toast.message"
+					class="bg-gray-900 bg-gradient-to-r text-white p-3 rounded mb-3 shadow-lg"
+					:class="{
+				'from-green-500 to-green-600': toast.type === 'success',
+				'from-blue-500 to-blue-600': toast.type === 'info',
+				'from-yellow-400 to-yellow-500': toast.type === 'warning',
+				'from-red-500 to-pink-500': toast.type === 'error',
+				}"
 				></div>
 			</template>
 		</div>
@@ -43,9 +72,6 @@
 		<script src="https://cdn.jsdelivr.net/npm/@ryangjchandler/spruce@2.x.x/dist/spruce.umd.js"></script>
 		<script>
 			Spruce.store("toasts", {
-				defaults: {
-					type: "info",
-				},
 				counter: 0,
 				list: [],
 				createToast(message, type = "info") {
