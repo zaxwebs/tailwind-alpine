@@ -14,22 +14,27 @@
 		<div class="min-h-screen flex justify-center items-center">
 			<button
 				x-data
-				@click="$store.toasts.createToast('This is a test toast message.')"
+				@click="$store.toasts.createToast('This is a test toast message. '+ Math.random())"
 				class="bg-blue-600 text-white p-3"
 			>
 				Create Test Toast
 			</button>
 		</div>
 		<div x-data class="absolute top-0 right-0 p-4 overflow-x-hidden">
-			<template x-for="(toast, index) in $store.toasts.list" :key="index">
+			<template
+				x-for="(toast, index) in $store.toasts.list"
+				:key="toast.id"
+			>
 				<div
+					@click="$store.toasts.destroyToast(index)"
+					x-show="toast.visible"
 					x-transition:enter="transition ease-in duration-200"
 					x-transition:enter-start="transform opacity-0 translate-y-2"
 					x-transition:enter-end="transform opacity-100"
 					x-transition:leave="transition ease-out duration-500"
 					x-transition:leave-start="transform translate-x-0 opacity-100"
 					x-transition:leave-end="transform translate-x-full opacity-0"
-					x-text="toast.message"
+					x-text="toast.message + ' ' + toast.id"
 					class="bg-gray-900 text-white p-3 rounded mb-3"
 				></div>
 			</template>
@@ -42,18 +47,19 @@
 					time: 4000,
 					type: "info",
 				},
+				counter: 0,
 				list: [],
 				createToast(message, type = "info") {
+					const index = this.list.length
 					this.list.push({
+						id: this.counter++,
 						message,
 						type,
+						visible: true,
 					})
-					setTimeout(() => {
-						this.destroyToast(this.list.length - 1)
-					}, this.defaults.time)
 				},
 				destroyToast(index) {
-					this.list.splice(index, 1)
+					this.list[index].visible = false
 				},
 			})
 		</script>
