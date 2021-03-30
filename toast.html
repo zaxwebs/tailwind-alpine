@@ -44,7 +44,6 @@
 		<script>
 			Spruce.store("toasts", {
 				defaults: {
-					time: 4000,
 					type: "info",
 				},
 				counter: 0,
@@ -57,6 +56,9 @@
 						type,
 						visible: true,
 					})
+					setTimeout(() => {
+						this.destroyToast(index)
+					}, 4000)
 				},
 				destroyToast(index) {
 					this.list[index].visible = false
