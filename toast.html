@@ -50,6 +50,10 @@
 				list: [],
 				createToast(message, type = "info") {
 					const index = this.list.length
+					let totalVisible =
+						this.list.filter((toast) => {
+							return toast.visible
+						}).length + 1
 					this.list.push({
 						id: this.counter++,
 						message,
@@ -58,7 +62,7 @@
 					})
 					setTimeout(() => {
 						this.destroyToast(index)
-					}, 4000)
+					}, 2000 * totalVisible)
 				},
 				destroyToast(index) {
 					this.list[index].visible = false
