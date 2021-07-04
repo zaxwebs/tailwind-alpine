@@ -12,7 +12,7 @@
 	</head>
 	<body
 		x-data="app()"
-		class="min-h-screen text-gray-900 flex justify-center items-center"
+		class="min-h-screen text-gray-600 flex justify-center items-center p-2"
 	>
 		<div>
 			<div class="mb-4">
@@ -94,23 +94,30 @@
 					</template>
 				</div>
 			</div>
+
+			<div class="text-gray-500">
+				You've selected
+				<span class="text-green-500" x-text="selectedPlan"></span> &
+				your selected direction is
+				<span class="text-green-500" x-text="selectedDirection"></span>.
+			</div>
 		</div>
 
 		<script>
 			const plans = [
-				{ id: "radio-tab-plan-a", value: "a", label: "Plan A" },
-				{ id: "radio-tab-plan-b", value: "b", label: "Plan B" },
+				{ id: "radio-tab-plan-a", value: "Plan A", label: "Plan A" },
+				{ id: "radio-tab-plan-b", value: "Plan B", label: "Plan B" },
 			]
 			const directions = [
-				{ id: "radio-tab-direction-e", value: "e", label: "East" },
-				{ id: "radio-tab-direction-w", value: "w", label: "West" },
-				{ id: "radio-tab-direction-n", value: "n", label: "North" },
-				{ id: "radio-tab-direction-s", value: "s", label: "South" },
+				{ id: "radio-tab-direction-e", value: "East", label: "East" },
+				{ id: "radio-tab-direction-w", value: "West", label: "West" },
+				{ id: "radio-tab-direction-n", value: "North", label: "North" },
+				{ id: "radio-tab-direction-s", value: "South", label: "South" },
 			]
 			function app() {
 				return {
-					selectedPlan: "a",
-					selectedDirection: "n",
+					selectedPlan: "Plan A",
+					selectedDirection: "North",
 				}
 			}
 			function radioTabs(name, radios) {
