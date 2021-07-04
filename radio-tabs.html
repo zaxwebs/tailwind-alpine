@@ -9,12 +9,17 @@
 			rel="stylesheet"
 		/>
 		<title>Tailwind + Alpine</title>
+		<style>
+			[x-cloak] {
+				display: none !important;
+			}
+		</style>
 	</head>
 	<body
 		x-data="app()"
 		class="min-h-screen text-gray-600 flex justify-center items-center p-2"
 	>
-		<div>
+		<div x-cloak>
 			<div class="mb-4">
 				<div
 					x-data="radioTabs('plan', plans)"
