@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+			rel="stylesheet"
+		/>
+		<title>Tailwind + Alpine</title>
+	</head>
+	<body
+		x-data="app()"
+		class="min-h-screen text-gray-900 flex justify-center items-center"
+	>
+		<div>
+			<div class="mb-4">
+				<div
+					x-data="radioTabs('plan', plans)"
+					class="
+						inline-flex
+						p-1
+						pr-0
+						bg-green-100
+						rounded-full
+						overflow-hidden
+					"
+				>
+					<template x-for="radio in radios">
+						<label
+							:for="radio.id"
+							class="
+								block
+								px-4
+								py-1
+								rounded-full
+								cursor-pointer
+								hover:bg-green-400 hover:text-white
+								mr-1
+							"
+							:class="selectedPlan === radio.value ? 'bg-green-500 text-white': ''"
+						>
+							<input
+								type="radio"
+								class="hidden"
+								:id="radio.id"
+								:value="radio.value"
+								:name="name"
+								x-model="selectedPlan"
+							/>
+							<div x-text="radio.label"></div>
+						</label>
+					</template>
+				</div>
+			</div>
+
+			<div class="mb-4">
+				<div
+					x-data="radioTabs('direction', directions)"
+					class="
+						inline-flex
+						p-1
+						pr-0
+						bg-green-100
+						rounded-full
+						overflow-hidden
+					"
+				>
+					<template x-for="radio in radios">
+						<label
+							:for="radio.id"
+							class="
+								block
+								px-4
+								py-1
+								rounded-full
+								cursor-pointer
+								hover:bg-green-400 hover:text-white
+								mr-1
+							"
+							:class="selectedDirection === radio.value ? 'bg-green-500 text-white': ''"
+						>
+							<input
+								type="radio"
+								class="hidden"
+								:id="radio.id"
+								:value="radio.value"
+								:name="name"
+								x-model="selectedDirection"
+							/>
+							<div x-text="radio.label"></div>
+						</label>
+					</template>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			const plans = [
+				{ id: "radio-tab-plan-a", value: "a", label: "Plan A" },
+				{ id: "radio-tab-plan-b", value: "b", label: "Plan B" },
+			]
+			const directions = [
+				{ id: "radio-tab-direction-e", value: "e", label: "East" },
+				{ id: "radio-tab-direction-w", value: "w", label: "West" },
+				{ id: "radio-tab-direction-n", value: "n", label: "North" },
+				{ id: "radio-tab-direction-s", value: "s", label: "South" },
+			]
+			function app() {
+				return {
+					selectedPlan: "a",
+					selectedDirection: "n",
+				}
+			}
+			function radioTabs(name, radios) {
+				return {
+					name,
+					radios,
+				}
+			}
+		</script>
+		<script
+			defer
+			src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+		></script>
+	</body>
+</html>
