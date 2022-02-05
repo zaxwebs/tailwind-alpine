@@ -36,17 +36,11 @@
 								class="text-sm text-gray-600"
 								x-text="project.description"
 							></p>
-							<template x-if="project.tags">
-								<template
-									x-for="(tag, index) in project.tags"
-									:key="index"
-								>
-									<span
-										class="text-sm text-gray-400"
-										x-text="tag"
-									></span>
-								</template>
-							</template>
+
+							<span
+								class="text-sm text-gray-400"
+								x-text="project.tags"
+							></span>
 						</div>
 					</a>
 				</template>
@@ -93,7 +87,7 @@
 							url: "sidebar-2.html",
 							name: "Sidebar",
 							description: "A responsive sidebar implementation.",
-							tags: ["v2"],
+							tags: ["v2, responsive"],
 						},
 						{
 							url: "slack",
