@@ -40,9 +40,20 @@
 								x-text="project.name"
 							></h3>
 							<p
-								class="text-sm text-gray-400"
+								class="text-sm text-gray-600"
 								x-text="project.description"
 							></p>
+							<template x-if="project.tags">
+								<template
+									x-for="(tag, index) in project.tags"
+									:key="index"
+								>
+									<span
+										class="text-sm text-gray-400"
+										x-text="tag"
+									></span>
+								</template>
+							</template>
 						</div>
 					</a>
 				</template>
@@ -57,64 +68,76 @@
 							name: "Base Template",
 							description:
 								"Starter file for Tailwind + Alpine projects.",
+							tags: ["v2"],
 						},
 						{
 							url: "dropdown.html",
 							name: "Dropdown",
 							description: "A simple dropdown implementation.",
+							tags: ["v2"],
 						},
 						{
 							url: "modal.html",
 							image: "images/modal.jpg",
 							name: "Modal",
 							description: "A simple modal implementation.",
+							tags: ["v2"],
 						},
 						{
 							url: "multi-modal.html",
 							name: "Multi-Modal",
 							description: "A simple multi-modal implementation.",
+							tags: ["v2"],
 						},
 						{
 							url: "sidebar.html",
 							name: "Sidebar - Non-responsive",
 							description:
 								"A non-responsive sidebar implementation.",
+							tags: ["v2"],
 						},
 						{
 							url: "sidebar-2.html",
 							name: "Sidebar",
 							description: "A responsive sidebar implementation.",
+							tags: ["v2"],
 						},
 						{
 							url: "slack",
 							name: "Slack",
 							description: "A slack clone.",
+							tags: ["v2"],
 						},
 						{
 							url: "crypto-card",
 							name: "Crypto Card",
 							description: "A crypto card.",
+							tags: ["v2"],
 						},
 						{
 							url: "chart",
 							name: "Chart",
 							description: "Apex Chart integration.",
+							tags: ["v2"],
 						},
 						{
 							url: "crypto-chart.html",
 							name: "Crypto Chart",
 							description: "Lightweight Charts integration.",
+							tags: ["v2"],
 						},
 						{
 							url: "toast.html",
 							name: "Toast Notifications",
 							description:
 								"A simple toast notification implementation.",
+							tags: ["v2"],
 						},
 						{
 							url: "radio-tabs.html",
 							name: "Radio Tabs",
 							description: "Custom radio tabs.",
+							tags: ["v3"],
 						},
 					],
 				}
